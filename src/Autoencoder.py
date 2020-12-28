@@ -55,5 +55,4 @@ class Autoencoder(t.nn.Module):
 
     # Load saved model params
     def load(self, path):
-        self.load_state_dict(t.load(path))
-
+        self.load_state_dict(t.load(path, map_location=t.device('cpu')))

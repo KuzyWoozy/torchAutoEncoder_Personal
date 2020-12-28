@@ -3,7 +3,7 @@ import torchvision as tv
 from matplotlib import pyplot as plt
 from src.Autoencoder import Autoencoder
 
-SAVE_PATH = "saved_models/autoencoder.pt"
+SAVE_PATH = "saved_models/autoencoder_1_epoch.pt"
 
 
 if __name__ == "__main__":
