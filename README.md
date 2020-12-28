@@ -8,6 +8,7 @@
   ```
 
 ## Usage:
+```bash
 train.py = Train AEs
 evaluate.py = Evaluate reconstructed images
 
@@ -15,4 +16,4 @@ evaluate.py = Evaluate reconstructed images
 > Modify src/AutoEncoder.py to change the AE itself
 > Evaluate saved models via evaulate.py. First image is original, 
 following image is reconstruction
-  
+```
