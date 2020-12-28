@@ -1,6 +1,7 @@
 from src.Autoencoder import Autoencoder
 import torchvision as tv
 import torch as t
+import os
 
 NUM_EPOCHS = 1
 SAVE_PATH = "saved_models/autoencoder.pt"
@@ -8,6 +9,9 @@ BATCH_SIZE = 1000
 
 
 if __name__ == "__main__":
+    if (not os.path.isdir("data")):
+        os.mkdir("data/")
+
     device = t.device("cuda" if t.cuda.is_available() else "cpu")
 
     training_data = tv.datasets.MNIST("data/", train=True, download=True, transform=tv.transforms.ToTensor())
