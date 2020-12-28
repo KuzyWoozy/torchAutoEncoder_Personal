@@ -19,7 +19,7 @@ class Autoencoder(t.nn.Module):
     def forward(self, x):
         self.train()
 
-        x = t.relu(self.layer0(x))
+        x = t.relu(self.layer1(x))
         x = t.sigmoid(self.layer2(x))
         return x
 
