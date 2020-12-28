@@ -20,6 +20,8 @@ if __name__ == "__main__":
     test_data = t.utils.data.DataLoader(test_data, batch_size=BATCH_SIZE, shuffle=True)
 
     net = Autoencoder()
+    if t.cuda.device_count() > 1:
+        net = t.nn.DataParallel(net)
     net.to(device)
 
     for epoch in range(NUM_EPOCHS):
