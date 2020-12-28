@@ -11,7 +11,9 @@ BATCH_SIZE = 1000
 if __name__ == "__main__":
     if (not os.path.isdir("data")):
         os.mkdir("data/")
-
+    if (not os.path.isdir("saved_models")):
+        os.mkdir("saved_models/")
+    
     device = t.device("cuda" if t.cuda.is_available() else "cpu")
 
     training_data = tv.datasets.MNIST("data/", train=True, download=True, transform=tv.transforms.ToTensor())
