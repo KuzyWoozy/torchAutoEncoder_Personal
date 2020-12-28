@@ -4,17 +4,13 @@ class Autoencoder(t.nn.Module):
     def __init__(self, input_shape=784):
         super().__init__()
 
-        self.layer1 = t.nn.Linear(input_shape, 100)
+        self.layer1 = t.nn.Linear(input_shape, 50)
         t.nn.init.kaiming_uniform_(self.layer1.weight, nonlinearity="relu")
         t.nn.init.zeros_(self.layer1.bias)
-        
-        self.layer2 = t.nn.Linear(100, 50)
+
+        self.layer2 = t.nn.Linear(50, input_shape)
         t.nn.init.kaiming_uniform_(self.layer2.weight, nonlinearity="relu")
         t.nn.init.zeros_(self.layer2.bias)
-
-        self.layer3 = t.nn.Linear(50, input_shape)
-        t.nn.init.kaiming_uniform_(self.layer3.weight, nonlinearity="relu")
-        t.nn.init.zeros_(self.layer3.bias)
 
         self.loss = t.nn.BCELoss(reduction="sum")
         self.opti = t.optim.Adam(self.parameters(), lr=0.001)
@@ -24,8 +20,7 @@ class Autoencoder(t.nn.Module):
         self.train()
 
         x = t.relu(self.layer1(x))
-        x = t.relu(self.layer2(x))
-        x = t.sigmoid(self.layer3(x))
+        x = t.sigmoid(self.layer2(x))
         return x
 
     # Uses loss of the forward propogation to train network
